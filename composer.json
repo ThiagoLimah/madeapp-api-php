@@ -1,0 +1,23 @@
+{
+  "name": "thiagolimah/madeapp-api-php",
+  "type": "library",
+  "description": "Api em PHP para facilitar a implementação de websites com acesso ao sistema MadeApp.",
+  "keywords": ["php", "api", "madeapp", "madeideias", "thiagolimah"],
+  "homepage": "http://madeapp.net/secure",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thiago Aquino de Lima",
+      "email": "thiagolimaes@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "MadeApp\\": "src/MadeApp/"
+    }
+  }
+}
