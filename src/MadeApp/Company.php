@@ -34,7 +34,7 @@ class Company extends Helper
     {
         $response = $this->get("company/details");
 
-        if (1 === (int) $response->status) {
+        if (isset($response->status) && 1 === (int) $response->status) {
             $company = new \MadeApp\Entities\Company();
             $company->setCode($response->company->codigo);
             $company->setType($response->company->especie);
