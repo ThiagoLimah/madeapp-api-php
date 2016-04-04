@@ -129,7 +129,7 @@ class Company
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (int) $code;
     }
 
     /**
@@ -145,7 +145,7 @@ class Company
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = stripslashes($name);
     }
 
     /**
@@ -161,7 +161,7 @@ class Company
      */
     public function setSimpleName($simpleName)
     {
-        $this->simpleName = $simpleName;
+        $this->simpleName = stripslashes($simpleName);
     }
 
     /**
@@ -177,7 +177,7 @@ class Company
      */
     public function setType($type)
     {
-        $this->type = $type;
+        $this->type = stripslashes($type);
     }
 
     /**
@@ -193,7 +193,7 @@ class Company
      */
     public function setLogo($logo)
     {
-        $this->logo = $logo;
+        $this->logo = stripslashes($logo);
     }
 
     /**
@@ -209,7 +209,7 @@ class Company
      */
     public function setVideo($video)
     {
-        $this->video = $video;
+        $this->video = stripslashes($video);
     }
 
     /**
@@ -225,7 +225,7 @@ class Company
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = stripslashes($description);
     }
 
     /**
@@ -241,7 +241,7 @@ class Company
      */
     public function setKeywords($keywords)
     {
-        $this->keywords = $keywords;
+        $this->keywords = stripslashes($keywords);
     }
 
     /**
@@ -257,7 +257,7 @@ class Company
      */
     public function setCnpj($cnpj)
     {
-        $this->cnpj = $cnpj;
+        $this->cnpj = stripslashes($cnpj);
     }
 
     /**
@@ -273,7 +273,7 @@ class Company
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = stripslashes($email);
     }
 
     /**
@@ -289,7 +289,7 @@ class Company
      */
     public function setWebsite($website)
     {
-        $this->website = $website;
+        $this->website = stripslashes($website);
     }
 
     /**
@@ -305,7 +305,7 @@ class Company
      */
     public function setFbFanPage($fbFanPage)
     {
-        $this->fbFanPage = $fbFanPage;
+        $this->fbFanPage = stripslashes($fbFanPage);
     }
 
     /**
@@ -321,7 +321,7 @@ class Company
      */
     public function setGoogleAnalytics($googleAnalytics)
     {
-        $this->googleAnalytics = $googleAnalytics;
+        $this->googleAnalytics = stripslashes($googleAnalytics);
     }
 
     /**
@@ -337,7 +337,7 @@ class Company
      */
     public function setZopimCode($zopimCode)
     {
-        $this->zopimCode = $zopimCode;
+        $this->zopimCode = stripslashes($zopimCode);
     }
 
     /**
