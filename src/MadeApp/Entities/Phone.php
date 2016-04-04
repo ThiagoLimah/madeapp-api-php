@@ -48,7 +48,7 @@ class Phone
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (int) $code;
     }
 
     /**
@@ -64,7 +64,7 @@ class Phone
      */
     public function setNumber($number)
     {
-        $this->number = $number;
+        $this->number = stripslashes($number);
     }
 
     /**
@@ -80,7 +80,7 @@ class Phone
      */
     public function setContact($contact)
     {
-        $this->contact = $contact;
+        $this->contact = stripslashes($contact);
     }
 
     /**
@@ -96,6 +96,6 @@ class Phone
      */
     public function setObs($obs)
     {
-        $this->obs = $obs;
+        $this->obs = stripslashes($obs);
     }
 }

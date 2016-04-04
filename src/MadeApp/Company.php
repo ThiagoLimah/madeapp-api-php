@@ -1,5 +1,7 @@
 <?php namespace MadeApp;
 
+use MadeApp\Entities\Phone;
+
 /**
  * Class Company
  *
@@ -48,6 +50,16 @@ class Company extends Helper
             $company->setFbFanPage($response->company->fb_fan_page);
             $company->setGoogleAnalytics($response->company->google_analytics);
             $company->setZopimCode($response->company->zopim_code);
+
+            foreach ($response->telefones as $obj) {
+                $phone = new Phone();
+                $phone->setCode($obj->codigo);
+                $phone->setNumber($obj->numero);
+                $phone->setContact($obj->contato);
+                $phone->setObs($obj->obs);
+
+                $company->addPhone($phone);
+            }
 
             return $company;
         }
