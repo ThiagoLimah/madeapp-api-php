@@ -64,7 +64,7 @@ class Company extends Helper
                 'lng'           => stripslashes($response->company->endereco->geolocation->lng)
             ));
 
-            foreach ($response->telefones as $obj) {
+            foreach ($response->company->telefones as $obj) {
                 $phone = new Phone();
                 $phone->setCode($obj->codigo);
                 $phone->setNumber($obj->numero);
