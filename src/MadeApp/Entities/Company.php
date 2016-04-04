@@ -366,7 +366,7 @@ class Company
 
     /**
      * Adiciona um telefone na empresa.
-     * 
+     *
      * @param \MadeApp\Entities\Phone $phone
      */
     public function addPhone(\MadeApp\Entities\Phone $phone)
