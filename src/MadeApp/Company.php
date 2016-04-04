@@ -51,6 +51,19 @@ class Company extends Helper
             $company->setGoogleAnalytics($response->company->google_analytics);
             $company->setZopimCode($response->company->zopim_code);
 
+            $company->setAddress(array(
+                'street'        => stripslashes($response->company->endereco->logradouro),
+                'number'        => stripslashes($response->company->endereco->numero),
+                'complement'    => stripslashes($response->company->endereco->complemento),
+                'zipcode'       => stripslashes($response->company->endereco->cep),
+                'district'      => stripslashes($response->company->endereco->bairro),
+                'city'          => stripslashes($response->company->endereco->cidade),
+                'state'         => stripslashes($response->company->endereco->uf),
+                'stateInitials' => stripslashes($response->company->endereco->uf_sigla),
+                'lat'           => stripslashes($response->company->endereco->geolocation->lat),
+                'lng'           => stripslashes($response->company->endereco->geolocation->lng)
+            ));
+
             foreach ($response->telefones as $obj) {
                 $phone = new Phone();
                 $phone->setCode($obj->codigo);
@@ -64,7 +77,7 @@ class Company extends Helper
             return $company;
         }
         else {
-            throw new \Exception("");
+            throw new \Exception("The data of the company could not be found.");
         }
     }
 }

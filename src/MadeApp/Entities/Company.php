@@ -89,7 +89,9 @@ class Company
         'district'      => '',
         'city'          => '',
         'state'         => '',
-        'stateInitials' => ''
+        'stateInitials' => '',
+        'lat'           => '',
+        'lng'           => ''
     );
 
     /**
