@@ -90,6 +90,13 @@ class Content extends Helper
      * @param int    $limit
      * @param int    $offset
      *
+     * Opções de ordenação:
+     *      0 => Título Crescente
+     *      1 => Título Descrescente
+     *      2 => Código Crescente
+     *      3 => Código Decrescente
+     *      4 => Aleatório
+     *
      * @return array<\MadeApp\Entities\Content>
      */
     public function all($order = '3', $limit = null, $offset = null)
@@ -156,6 +163,13 @@ class Content extends Helper
      *
      * Para buscar conteúdos de categorias combinadas é necessário que o parâmetro $category
      * seja NULL.
+     *
+     * Opções de ordenação:
+     *      0 => Título Crescente
+     *      1 => Título Descrescente
+     *      2 => Código Crescente
+     *      3 => Código Decrescente
+     *      4 => Aleatório
      *
      * @param int    $category
      * @param string $combinedCategories
