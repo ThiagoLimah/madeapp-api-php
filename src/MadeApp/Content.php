@@ -28,6 +28,60 @@ class Content extends Helper
     }
 
     /**
+     * Retorna os dados de um conteúdo pelo código.
+     *
+     * @param int $code
+     *
+     * @return Entities\Content|null
+     */
+    public function get($code)
+    {
+        $result = $this->get('modContent/content', array(
+            'code' => $code
+        ));
+
+        if (isset($result->status) && 1 === (int) $result->status
+            && isset($result->conteudo) && !empty($result->conteudo)) {
+            $content = new \MadeApp\Entities\Content();
+            $content->setCode($result->conteudo->codigo);
+            $content->setCategoryCode($result->conteudo->categoria);
+            $content->setCategoryName($result->conteudo->categoria_nome);
+            $content->setUserCode($result->conteudo->usuario);
+            $content->setUserName($result->conteudo->usuario_nome);
+            $content->setUserPhoto($result->conteudo->usuario_foto);
+            $content->setTitle($result->conteudo->titulo);
+            $content->setText($result->conteudo->texto);
+            $content->setKeywords($result->conteudo->keywords);
+            $content->setVideo($result->conteudo->video);
+            $content->setAttachment($result->conteudo->anexo);
+            $content->setSourceName($result->conteudo->fonte_nome);
+            $content->setSourceLink($result->conteudo->fonte_url);
+            $content->setFeature($result->conteudo->destaque);
+            $content->setActive($result->conteudo->ativo);
+            $content->setDate($result->conteudo->data_cadastro);
+
+            foreach ($result->conteudo->galeria as $img) {
+                $image = new \MadeApp\Entities\ImageGallery();
+                $image->setCode($img->codigo);
+                $image->setDescription($img->descricao);
+                $image->setUrl($img->url);
+                $image->setDate($img->data_envio);
+                $image->setFeature($img->destaque);
+                $image->setActive($img->status);
+
+                $content->addImageGallery($image);
+            }
+
+            return $content;
+        }
+
+        /* Total setado para 0 */
+        $this->total = 0;
+
+        return null;
+    }
+
+    /**
      * Retorna todos os conteúdos cadastrados no MadeApp.
      *
      * @param string $order
