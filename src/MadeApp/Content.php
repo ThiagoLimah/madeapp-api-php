@@ -34,7 +34,7 @@ class Content extends Helper
      *
      * @return Entities\Content|null
      */
-    public function get($code)
+    public function find($code)
     {
         $result = $this->get('modContent/content', array(
             'code' => $code
