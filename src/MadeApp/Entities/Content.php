@@ -379,7 +379,7 @@ class Content
 
     /**
      * Adiciona uma imagem a galeria do conteúdo.
-     * 
+     *
      * @param ImageGallery $image
      */
     public function addImageGallery(\MadeApp\Entities\ImageGallery $image)
