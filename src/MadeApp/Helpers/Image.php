@@ -3,7 +3,7 @@
 /**
  * Class Image
  *
- * Helper para manipulação de arquivos de imagem. 
+ * Helper para manipulação de arquivos de imagem.
  *
  * @package MadeApp\Helpers
  * @author Thiago A. de Lima <thiagolimaes@gmail.com>
