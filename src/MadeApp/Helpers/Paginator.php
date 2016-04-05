@@ -116,7 +116,7 @@ class Paginator
         }
 
         /* Página atual */
-        $html .= '<li class="active"><a href="javascript:;" class="paginator-current '.$this->classForCurrent.'">'.$this->page.'</a></li>';
+        $html .= '<li class="'.$this->classForCurrent.'"><a href="javascript:;" class="paginator-current">'.$this->page.'</a></li>';
 
         for ( $i = 1; $i <= 3; $i++ ) {
             if ( ( $this->page + $i ) <= $this->pageTotal ) {
