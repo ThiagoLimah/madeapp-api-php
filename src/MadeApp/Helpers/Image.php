@@ -30,7 +30,7 @@ class Image
         if (file_exists($destination . $fileName)) {
             return url("/img/{$width}-{$height}/" . $fileName);
         }
-        
+
         if (!file_exists($destination)) {
             @mkdir($destination, 0777);
         }
