@@ -35,7 +35,7 @@ class Image
 
         $thumbnail->save($destination . $fileName);
 
-        return url($destination . $fileName);
+        return url("/img/{$width}-{$height}/" . $fileName);
     }
 
     /**
@@ -50,6 +50,6 @@ class Image
         $explodedName = (array) explode('/', trim($file));
         $reversedName = array_reverse($explodedName);
 
-        return $reversedName[0] or '';
+        return $reversedName[0];
     }
 }
