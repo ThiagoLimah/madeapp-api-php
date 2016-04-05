@@ -33,7 +33,7 @@ class Strings
 
     /**
      * Retorna a string cortada nas posições solicitadas.
-     * 
+     *
      * @param string $str
      * @param int    $start
      * @param int    $limit
