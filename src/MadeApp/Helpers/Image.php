@@ -22,21 +22,20 @@ class Image
      */
     public static function CreateThumbnail($file, $width = 800, $height = 600)
     {
-        $mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
-        $size = new \Imagine\Image\Box($width, $height);
-
-        $thumbnail   = \Orchestra\Imagine\Facade::open($file)->thumbnail($size, $mode);
+        $mode        = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
+        $size        = new \Imagine\Image\Box($width, $height);
         $destination = public_path() . "/img/{$width}-{$height}/";
         $fileName    = self::GetFileName($file);
 
         if (file_exists($destination . $fileName)) {
             return url("/img/{$width}-{$height}/" . $fileName);
         }
-
+        
         if (!file_exists($destination)) {
             @mkdir($destination, 0777);
         }
 
+        $thumbnail = \Orchestra\Imagine\Facade::open($file)->thumbnail($size, $mode);
         $thumbnail->save($destination . $fileName);
 
         return url("/img/{$width}-{$height}/" . $fileName);
