@@ -17,6 +17,11 @@ class Paginator
     public $total;
 
     /**
+     * @var string
+     */
+    public $classForCurrent;
+
+    /**
      * @var int
      */
     public $limit;
@@ -111,7 +116,7 @@ class Paginator
         }
 
         /* Página atual */
-        $html .= '<li class="active"><a href="javascript:;" class="paginator-current current">'.$this->page.'</a></li>';
+        $html .= '<li class="active"><a href="javascript:;" class="paginator-current '.$this->classForCurrent.'">'.$this->page.'</a></li>';
 
         for ( $i = 1; $i <= 3; $i++ ) {
             if ( ( $this->page + $i ) <= $this->pageTotal ) {
