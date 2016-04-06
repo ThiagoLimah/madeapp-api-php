@@ -59,7 +59,7 @@ class Strings
      */
     public static function CleanString($str, $slug = false)
     {
-        $str = self::toLowerCase($str);
+        $str = strtolower($str);
         $str = utf8_decode($str);
 
         // Código ASCII das vogais
