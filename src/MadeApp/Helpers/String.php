@@ -50,6 +50,8 @@ class Strings
     /**
      * Limpa a string informada removendo todos os acentos.
      *
+     * @link http://blog.thiagobelem.net/removendo-acentos-de-uma-string-urls-amigaveis
+     *
      * @param string $str
      * @param string $slug
      *
