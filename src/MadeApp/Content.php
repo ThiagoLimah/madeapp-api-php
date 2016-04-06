@@ -102,12 +102,27 @@ class Content extends Helper
      */
     public function all($order = '3', $featured = null, $limit = null, $offset = null)
     {
-        $result = $this->get('modContent/contents', array(
-            'order'    => $order,
-            'featured' => is_null($featured) ? '' : (bool) $featured ? '1' : '0',
-            'limit'    => $limit,
-            'offset'   => $offset
-        ));
+        $options          = array();
+        $options['order'] = $order;
+
+        if (!is_null($featured)) {
+            if ((bool) $featured === true) {
+                $options['featured'] = '1';
+            }
+            else if ((bool) $featured === false) {
+                $options['featured'] = '0';
+            }
+        }
+
+        if (!is_null($limit)) {
+            $options['limit'] = $limit;
+        }
+
+        if (!is_null($offset)) {
+            $options['offset'] = $offset;
+        }
+
+        $result = $this->get('modContent/contents', $options);
 
         if (isset($result->status) && 1 === (int) $result->status) {
             $this->total = (int) $result->total;
@@ -183,13 +198,26 @@ class Content extends Helper
      */
     public function allByCategory($category = null, $combinedCategories = null, $order = '3', $limit = null, $offset = null)
     {
-        $result = $this->get('modContent/contents', array(
-            'category'          => $category,
-            'combineCategories' => $combinedCategories,
-            'order'             => $order,
-            'limit'             => $limit,
-            'offset'            => $offset
-        ));
+        $options          = array();
+        $options['order'] = $order;
+
+        if (!is_null($category)) {
+            $options['category'] = $category;
+        }
+
+        if (!is_null($combinedCategories)) {
+            $options['combineCategories'] = $combinedCategories;
+        }
+
+        if (!is_null($limit)) {
+            $options['limit'] = $limit;
+        }
+
+        if (!is_null($offset)) {
+            $options['offset'] = $offset;
+        }
+
+        $result = $this->get('modContent/contents', $options);
 
         if (isset($result->status) && 1 === (int) $result->status) {
             $this->total = (int) $result->total;
