@@ -87,6 +87,7 @@ class Content extends Helper
      * Retorna todos os conteúdos cadastrados no MadeApp.
      *
      * @param string $order
+     * @param bool   $featured
      * @param int    $limit
      * @param int    $offset
      *
@@ -99,12 +100,13 @@ class Content extends Helper
      *
      * @return array<\MadeApp\Entities\Content>
      */
-    public function all($order = '3', $limit = null, $offset = null)
+    public function all($order = '3', $featured = null, $limit = null, $offset = null)
     {
         $result = $this->get('modContent/contents', array(
-            'order'  => $order,
-            'limit'  => $limit,
-            'offset' => $offset
+            'order'    => $order,
+            'featured' => is_null($featured) ? '' : (bool) $featured ? '1' : '0',
+            'limit'    => $limit,
+            'offset'   => $offset
         ));
 
         if (isset($result->status) && 1 === (int) $result->status) {
