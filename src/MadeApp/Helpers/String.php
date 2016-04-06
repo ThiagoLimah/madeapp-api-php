@@ -87,7 +87,7 @@ class Strings
                 $accentuation .= chr($code);
             }
 
-            $change[$key] = "/[{$accentuation}]/i";
+            $change[$key] = "/[" . $accentuation . "]/i";
         }
 
         $str = preg_replace(array_values($change), array_keys($change), $str);
@@ -97,7 +97,7 @@ class Strings
             $str = preg_replace("/[^a-z0-9]/i", $slug, $str);
 
             /* Tira os caracteres ($slug) repetidos */
-            $str = preg_replace("/{$slug}{2,}/i", $slug, $str);
+            $str = preg_replace("/" . $slug . "{2,}/i", $slug, $str);
 
             /* Remove os caracteres ($slug) do início/fim da string */
             $str = trim($str, $slug);
