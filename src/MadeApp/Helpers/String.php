@@ -59,8 +59,12 @@ class Strings
      */
     public static function CleanString($str, $slug = false)
     {
-        $str = strtolower($str);
-        $str = utf8_decode($str);
+        if (mb_detect_encoding($str.'x', 'UTF-8, ISO-8859-1') == 'UTF-8') {
+            $str = utf8_decode(strtolower($str));
+        }
+        else {
+            $str = strtolower($str);
+        }
 
         // Código ASCII das vogais
         $ascii['a'] = range(224, 230);
