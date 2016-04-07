@@ -68,7 +68,10 @@ class Strings
         $codes['i'] = array('ì', 'í', 'î', 'ï');
         $codes['o'] = array('ò', 'ó', 'õ', 'ô', 'ö');
         $codes['u'] = array('ù', 'ú', 'û', 'ü');
-        
+        $codes['c'] = array('ç');
+        $codes['n'] = array('ñ');
+        $codes['y'] = array('ý', 'ÿ');
+
         /* Substituo os caracteres da string */
         foreach ($codes as $key => $values) {
             $str = str_replace($values, $key, $str);
