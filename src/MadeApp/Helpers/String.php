@@ -68,6 +68,11 @@ class Strings
         $codes['i'] = array('ì', 'í', 'î', 'ï');
         $codes['o'] = array('ò', 'ó', 'õ', 'ô', 'ö');
         $codes['u'] = array('ù', 'ú', 'û', 'ü');
+        
+        /* Substituo os caracteres da string */
+        foreach ($codes as $key => $values) {
+            $str = str_replace($values, $key, $str);
+        }
 
         if ($slug) {
             /* Troca tudo que não for letra ou número por um caractere ($slug) */
