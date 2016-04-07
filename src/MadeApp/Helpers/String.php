@@ -59,33 +59,15 @@ class Strings
      */
     public static function CleanString($str, $slug = false)
     {
-        $str = self::toLowerCase($str);
+        $str = \Illuminate\Support\Str::lower($str);
 
-        // Código ASCII das vogais
-        $ascii['a'] = range(224, 230);
-        $ascii['e'] = range(232, 235);
-        $ascii['i'] = range(236, 239);
-        $ascii['o'] = array_merge(range(242, 246), array(240, 248));
-        $ascii['u'] = range(249, 252);
-
-        // Código ASCII dos outros caracteres
-        $ascii['b'] = array(223);
-        $ascii['c'] = array(231);
-        $ascii['d'] = array(208);
-        $ascii['n'] = array(241);
-        $ascii['y'] = array(253, 255);
-
-        foreach ($ascii as $key => $item) {
-            $accentuation = "";
-
-            foreach ($item AS $code) {
-                $accentuation .= chr($code);
-            }
-
-            $change[$key] = "/[" . $accentuation . "]/i";
-        }
-
-        $str = preg_replace(array_values($change), array_keys($change), $str);
+        /* Códigos de substituição */
+        $codes      = array();
+        $codes['a'] = array('à', 'á', 'ã', 'â', 'ä');
+        $codes['e'] = array('è', 'é', 'ê', 'ë');
+        $codes['i'] = array('ì', 'í', 'î', 'ï');
+        $codes['o'] = array('ò', 'ó', 'õ', 'ô', 'ö');
+        $codes['u'] = array('ù', 'ú', 'û', 'ü');
 
         if ($slug) {
             /* Troca tudo que não for letra ou número por um caractere ($slug) */
