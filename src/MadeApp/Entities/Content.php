@@ -79,7 +79,7 @@ class Content
 
     /**
      * Galerias do Conteúdo
-     * @var array<>
+     * @var array<\MadeApp\Entities\ImageGallery>
      */
     private $gallery = array();
 
