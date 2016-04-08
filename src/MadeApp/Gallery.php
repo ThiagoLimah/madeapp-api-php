@@ -1,5 +1,14 @@
 <?php namespace MadeApp;
 
+/**
+ * Class Gallery
+ *
+ * Responsável por buscar as informações do módulo galeria.
+ *
+ * @package MadeApp
+ * @author Thiago A. de Lima <thiagolimaes@gmail.com>
+ * @version 1.0
+ */
 class Gallery extends Helper
 {
     /**
