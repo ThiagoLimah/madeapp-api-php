@@ -85,7 +85,7 @@ class Content extends Helper
 
     /**
      * Realiza uma busca nos conteudos cadastrados no MadeApp.
-     * 
+     *
      * @param string $query
      * @param int    $limit
      * @param int    $offset
