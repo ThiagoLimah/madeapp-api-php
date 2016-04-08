@@ -84,6 +84,78 @@ class Content extends Helper
     }
 
     /**
+     * Realiza uma busca nos conteudos cadastrados no MadeApp.
+     * 
+     * @param string $query
+     * @param int    $limit
+     * @param int    $offset
+     *
+     * @return array
+     */
+    public function search($query, $limit = null, $offset = null)
+    {
+        $options           = array();
+        $options['order']  = '3';
+        $options['search'] = $query;
+
+        if (!is_null($limit)) {
+            $options['limit'] = $limit;
+        }
+
+        if (!is_null($offset)) {
+            $options['offset'] = $offset;
+        }
+
+        $result = $this->get('modContent/contents', $options);
+
+        if (isset($result->status) && 1 === (int) $result->status) {
+            $this->total = (int) $result->total;
+            $response    = array();
+
+            foreach ($result->conteudos as $obj) {
+                $content = new \MadeApp\Entities\Content();
+                $content->setCode($obj->codigo);
+                $content->setCategoryCode($obj->categoria);
+                $content->setCategoryName($obj->categoria_nome);
+                $content->setUserCode($obj->usuario);
+                $content->setUserName($obj->usuario_nome);
+                $content->setUserPhoto($obj->usuario_foto);
+                $content->setTitle($obj->titulo);
+                $content->setText($obj->texto);
+                $content->setKeywords($obj->keywords);
+                $content->setVideo($obj->video);
+                $content->setAttachment($obj->anexo);
+                $content->setSourceName($obj->fonte_nome);
+                $content->setSourceLink($obj->fonte_url);
+                $content->setFeature($obj->destaque);
+                $content->setActive($obj->ativo);
+                $content->setDate($obj->data_cadastro);
+
+                foreach ($obj->galeria as $img) {
+                    $image = new \MadeApp\Entities\ImageGallery();
+                    $image->setCode($img->codigo);
+                    $image->setDescription($img->descricao);
+                    $image->setUrl($img->url);
+                    $image->setDate($img->data_envio);
+                    $image->setFeature($img->destaque);
+                    $image->setActive($img->status);
+
+                    $content->addImageGallery($image);
+                }
+
+                $response[] = $content;
+            }
+
+            return $response;
+        }
+
+        /* Total setado para 0 */
+        $this->total = 0;
+
+        return array();
+    }
+
+    /**
      * Retorna todos os conteúdos cadastrados no MadeApp.
      *
      * @param string $order
