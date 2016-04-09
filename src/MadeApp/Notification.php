@@ -16,7 +16,7 @@ class Notification extends Helper
     /**
      * @var string
      */
-    protected $uriServer = 'http://api.madeapp.net/ws-v1';
+    protected $wsURI = 'http://api.madeapp.net/ws-v1';
 
     /**
      * @var array
