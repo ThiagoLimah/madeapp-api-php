@@ -294,7 +294,7 @@ class Event
     /**
      * @param \MadeApp\Entities\ImageGallery $gallery
      */
-    public function setGallery(\MadeApp\Entities\ImageGallery $gallery)
+    public function addImageGallery(\MadeApp\Entities\ImageGallery $gallery)
     {
         $this->gallery[] = $gallery;
     }
