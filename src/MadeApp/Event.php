@@ -44,7 +44,8 @@ class Event extends Helper
         ));
 
         if (isset($result->status) && 1 === (int) $result->status && isset($result->result->content[0])) {
-            $obj = $result->result->content[0];
+            $obj         = $result->result->content[0];
+            $this->total = 1;
 
             $event = new \MadeApp\Entities\Event();
             $event->setCode($obj->code);
